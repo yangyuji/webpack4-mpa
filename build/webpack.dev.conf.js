@@ -1,7 +1,6 @@
 const path = require('path');
 const merge = require("webpack-merge");
 const webpackConfigBase = require('./webpack.base.conf');
-const envConf = require("./env-config");
 
 const webpackConfigDev = {
   mode: 'development', // 通过 mode 声明开发环境

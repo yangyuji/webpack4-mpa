@@ -9,6 +9,7 @@ const htmlWebpackPlugin = require("html-webpack-plugin");
 //静态资源输出
 const copyWebpackPlugin = require("copy-webpack-plugin");
 const rules = require("./webpack.rules.conf.js");
+const util = require("./utils");
 
 // 获取html-webpack-plugin参数的方法
 var getHtmlConfig = function (name, chunks) {
@@ -47,9 +48,7 @@ module.exports = {
   entry: getEntry(),
   output: {
     path: path.resolve(__dirname, '../docs'),
-    filename: process.env.NODE_ENV === 'production'
-      ? config.build.assetsSubDirectory + 'js/[name].[hash:5].js'
-      : config.dev.assetsSubDirectory + 'js/[name].[hash:5].js',
+    filename: util.assetsPath('js/[name].[hash:5].js'),
     publicPath:
       process.env.NODE_ENV === 'production'
         ? config.build.assetsPublicPath

@@ -1,18 +1,9 @@
 const extractTextPlugin = require("extract-text-webpack-plugin");
 const path = require('path');
-const config = require("./env-config");
+const util = require('./utils')
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
-}
-
-function assetsPath(_path) {
-  const assetsSubDirectory =
-    process.env.NODE_ENV === 'production'
-      ? config.build.assetsSubDirectory
-      : config.dev.assetsSubDirectory
-
-  return path.posix.join(assetsSubDirectory, _path)
 }
 
 const rules = [
@@ -21,9 +12,9 @@ const rules = [
     use: process.env.NODE_ENV === "development" ?
       ["style-loader", "css-loader", "sass-loader", "postcss-loader"] :
       extractTextPlugin.extract({
-      fallback: "style-loader",
-      use: ["css-loader", "sass-loader", "postcss-loader"]
-    })
+        fallback: "style-loader",
+        use: ["css-loader", "sass-loader", "postcss-loader"]
+      })
   }, {
     test: /\.js$/,
     loader: 'babel-loader?cacheDirectory',
@@ -39,7 +30,7 @@ const rules = [
       loader: "url-loader",
       options: {
         limit: 5 * 1024, // 小于时将会已base64位图片打包处理
-        name: assetsPath('img/[name].[hash:7].[ext]')
+        name: util.assetsPath('img/[name].[hash:5].[ext]')
       }
     }]
   }, {
@@ -47,14 +38,14 @@ const rules = [
     loader: 'url-loader',
     options: {
       limit: 10000,
-      name: assetsPath('media/[name].[hash:7].[ext]')
+      name: util.assetsPath('media/[name].[hash:5].[ext]')
     }
   }, {
     test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
     loader: 'url-loader',
     options: {
       limit: 10000,
-      name: assetsPath('fonts/[name].[hash:7].[ext]')
+      name: util.assetsPath('fonts/[name].[hash:5].[ext]')
     }
   }, {
     test: /\.html$/,

@@ -7,7 +7,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const extractTextPlugin = require("extract-text-webpack-plugin");
 const webpackConfigBase = require('./webpack.base.conf');
-const config = require("./env-config");
+const util = require("./utils");
 
 const webpackConfigProd = {
   mode: 'production', // 通过 mode 声明生产环境
@@ -24,9 +24,7 @@ const webpackConfigProd = {
     }),
     // 分离css插件参数为提取出去的路径
     new extractTextPlugin({
-      filename: process.env.NODE_ENV === 'production'
-        ? config.build.assetsSubDirectory + '/css/[name].[hash:5].css'
-        : config.dev.assetsSubDirectory + '/css/[name].[hash:5].css',
+      filename: util.assetsPath('css/[name].[hash:5].css')
     }),
     //压缩css
     new OptimizeCSSPlugin({
