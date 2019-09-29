@@ -5,14 +5,14 @@ const path = require('path')
 module.exports = {
   dev: {
     // Paths
-    assetsSubDirectory: 'static/',
-    assetsPublicPath: '/'
+    assetsPublicPath: '/',
+    assetsSubDirectory: 'static/'
   },
 
   build: {
     // Paths
     assetsRoot: path.resolve(__dirname, '../docs'),
-    assetsSubDirectory: 'static/',
     assetsPublicPath: '/webpack4-mpa/',
+    assetsSubDirectory: 'static/'
   }
 }
