@@ -25,8 +25,8 @@ const webpackConfigProd = {
     // 分离css插件参数为提取出去的路径
     new extractTextPlugin({
       filename: process.env.NODE_ENV === 'production'
-        ? config.build.assetsSubDirectory + '/css/[name].[hash:8].min.css'
-        : config.dev.assetsSubDirectory + '/css/[name].[hash:8].min.css',
+        ? config.build.assetsSubDirectory + '/css/[name].[hash:5].css'
+        : config.dev.assetsSubDirectory + '/css/[name].[hash:5].css',
     }),
     //压缩css
     new OptimizeCSSPlugin({

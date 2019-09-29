@@ -48,8 +48,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../docs'),
     filename: process.env.NODE_ENV === 'production'
-      ? config.build.assetsSubDirectory + '/js/[name].[hash].js'
-      : config.dev.assetsSubDirectory + '/js/[name].[hash].js',
+      ? config.build.assetsSubDirectory + 'js/[name].[hash:5].js'
+      : config.dev.assetsSubDirectory + 'js/[name].[hash:5].js',
     publicPath:
       process.env.NODE_ENV === 'production'
         ? config.build.assetsPublicPath
